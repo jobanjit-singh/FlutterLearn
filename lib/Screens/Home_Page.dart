@@ -2,28 +2,35 @@ import 'package:day_2/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import '../models/productModel.dart';
 import '../widgets/ItemDesign.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
-class homepage extends StatelessWidget {
+class homepage extends StatefulWidget {
   homepage({super.key});
 
-  final itemList = [
-    Item(
-        id: "Jitcode1",
-        name: "Oppo A77",
-        desc: "Device is made by oppo",
-        price: 150,
-        color: "#808080",
-        image:
-            "https://image.oppo.com/content/dam/oppo/product-asset-library/a/a77/v2/assets/module-kv/module-kv-bg-1920.jpg"),
-    Item(
-        id: "jitcode2",
-        name: "IPhone 13",
-        desc: "Device is made by Apple",
-        price: 999,
-        color: "#121212",
-        image:
-            "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-2-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1663790290203")
-  ];
+  @override
+  State<homepage> createState() => _homepageState();
+}
+
+class _homepageState extends State<homepage> {
+  List<Item> itemList=[];
+  @override
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    final productString =
+        await rootBundle.loadString("assets/files/product.json");
+    final productList = jsonDecode(productString);
+    final itemsList = productList["products"];
+    itemList =
+        List.from(itemsList).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {
+      
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,12 +41,14 @@ class homepage extends StatelessWidget {
       ),
       body: Padding(
         padding: EdgeInsets.all(10.0),
-        child: ListView.builder(
-          itemCount: itemList.length,
-          itemBuilder: (context, index) {
-            return ItemDesign(item: itemList[index]);
-          },
-        ),
+        child: (itemList != null && itemList.isNotEmpty)
+            ? ListView.builder(
+                itemCount: itemList.length,
+                itemBuilder: (context, index) {
+                  return ItemDesign(item: itemList[index]);
+                },
+              )
+            : Center(child: CircularProgressIndicator()),
       ),
       drawer: MyDrawer(),
     );

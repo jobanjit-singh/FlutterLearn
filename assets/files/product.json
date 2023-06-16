@@ -9,12 +9,28 @@
             "image" : "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-2-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1663790290203"
         },
         {
-            "id": "Jitcode1",
+            "id": "Jitcode2",
             "name": "Oppo A77",
             "desc": "oppo Made this product",
             "price" : 150,
             "color": "#808080",
             "image" : "https://image.oppo.com/content/dam/oppo/product-asset-library/a/a77/v2/assets/module-kv/module-kv-bg-1920.jpg"
+        },
+        {
+            "id": "Jitcode3",
+            "name": "Iphone 5",
+            "desc": "Apple Made this product",
+            "price": 300,
+            "color": "#h562h2",
+            "image": "https://5.imimg.com/data5/SELLER/Default/2022/4/FN/AZ/HY/77881932/refurbished-apple-iphone-5s-silver-mobile-phone.jpg"
+        },
+        {
+            "id": "Jitcode4",
+            "name": "Nokia 3310",
+            "desc": "Nokia Made this product",
+            "price": 15,
+            "color": "#h562h2",
+            "image": "https://m.media-amazon.com/images/I/61tmePx9zzL.jpg"
         }
 
     ]
